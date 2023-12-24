@@ -11,6 +11,10 @@ import java.util.ArrayList;
 
 public class NewUserCouponRule implements IRule<CouponData, Void> {
 
+    public NewUserCouponRule() {
+        System.out.println("Adding NewUserCouponRule");
+    }
+
     @Override
     public boolean isRuleApplicable(CouponData input) {
         final User user = input.getUser();
@@ -20,7 +24,11 @@ public class NewUserCouponRule implements IRule<CouponData, Void> {
 
         long daysBetween = ChronoUnit.DAYS.between(presentDate, userAccountCreated);
 
-        return daysBetween <= 7;
+        final boolean result = daysBetween <= 7;
+
+        System.out.println(String.format("Result of NewUserCouponRule evaluation is: %s", result));
+
+        return result;
     }
 
     @Override
@@ -30,7 +38,7 @@ public class NewUserCouponRule implements IRule<CouponData, Void> {
         }
 
         input.getCoupons().add(Coupon.NEW_USER);
-
+        System.out.println("Added NEW_USER coupon");
         return null;
     }
 }

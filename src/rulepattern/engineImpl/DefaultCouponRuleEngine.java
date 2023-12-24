@@ -25,12 +25,10 @@ public class DefaultCouponRuleEngine implements ICouponRuleEngine {
 
     @Override
     public void evaluateRules(CouponData input) {
-        System.out.println("rules evaluate started");
-
-        rules.stream()
-                .filter(rule -> rule.isRuleApplicable(input))
-                .forEach(rule -> rule.applyRule(input));
-
-        System.out.println("rules evaluate completed");
+        rules.forEach(rule -> {
+            if (rule.isRuleApplicable(input)) {
+                rule.applyRule(input);
+            }
+        });
     }
 }
