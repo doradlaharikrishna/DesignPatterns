@@ -10,5 +10,9 @@ public enum Coupon {
 
     FESTIVAL_OFFER,
 
-    ORDER_100;
+    ORDER_100,
+
+    BIRTHDAY_FESTIVE_OFFER,
+
+    NEW_USER_COMBO_OFFER;
 }
